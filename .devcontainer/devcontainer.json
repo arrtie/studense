@@ -1,0 +1,17 @@
+{
+    "name": "Ruby Development Container",
+    "image": "ruby:latest",
+    "workspaceFolder": "/studense",
+    "forwardPorts": [3333],
+    "runArgs": [
+        "--name", "studense-devcontainer"
+    ],
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"terminal.integrated.shell.linux": "/bin/bash"
+			},
+			"extensions": ["ms-azuretools.vscode-docker", "redhat.vscode-yaml", "shopify.ruby-lsp"]
+        }
+	}
+}
