@@ -1,10 +1,13 @@
 {
-    "name": "Ruby Development Container",
+    "name": "Studense RoR",
     "image": "ruby:latest",
-    "workspaceFolder": "/studense",
+    "workspaceFolder": "/opt/studense",
     "forwardPorts": [3333],
     "runArgs": [
         "--name", "studense-devcontainer"
+    ],
+	"mounts": [
+        "source=${localWorkspaceFolder},target=/opt/studense,type=bind"
     ],
 	"customizations": {
 		"vscode": {

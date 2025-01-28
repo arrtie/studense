@@ -1,4 +1,5 @@
 FROM ruby:latest
-WORKDIR /studense
+RUN mkdir /opt/studense
+WORKDIR /opt/studense
 COPY ../ .
 EXPOSE 3333
