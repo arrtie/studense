@@ -1,0 +1,11 @@
+<h1>Account Details</h1>
+<div>
+    <h2>Account</h2>
+    <p>account id: <%= @account.id %></p>
+    <h2>Profile</h2>
+    <ul>
+        <% @profile.attributes.each do |key, value| %>
+        <li><%= key %> : <%= value%></li>
+        <%end%>
+    </ul>
+</div>

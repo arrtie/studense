@@ -1,2 +1,32 @@
+# frozen_string_literal: true
+
 class AccountsController < ApplicationController
+  def index
+    @accounts = Account.all
+  end
+
+  def new
+    @account = Account.new
+    @account.build_profile
+  end
+
+  def show
+    @account = Account.find(params[:id])
+    @profile = @account.profile
+  end
+
+  def create
+    @account = Account.new(account_params)
+    if @account.save
+      redirect_to @account
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  private
+
+  def account_params
+    params.require(:account).permit(profile_attributes: [ :first_name, :last_name, :email, :birthdate ])
+  end
 end
