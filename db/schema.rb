@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_29_031529) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_29_150258) do
   create_table "accounts", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "uuid", default: "gen_random_uuid()", null: false
+    t.string "uuid", default: -> { "gen_random_uuid()" }, null: false
   end
+
+  create_table "profiles", force: :cascade do |t|
+    t.string "account_id", null: false
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.datetime "birthdate", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_profiles_on_account_id"
+  end
+
+  add_foreign_key "profiles", "accounts", primary_key: "uuid"
 end
