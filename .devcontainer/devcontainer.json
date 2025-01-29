@@ -2,7 +2,7 @@
     "name": "Studense RoR",
     "image": "ruby:latest",
     "workspaceFolder": "/opt/studense",
-    "forwardPorts": [3333],
+    "forwardPorts": [3000],
     "runArgs": [
         "--name", "studense-devcontainer"
     ],

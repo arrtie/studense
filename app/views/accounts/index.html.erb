@@ -1,0 +1,10 @@
+<h1>Accounts</h1>
+<ul>
+  <% @accounts.each do |account| %>
+    <li>
+      <a href="<%= account_path(account) %>">
+        <%= account.id %>
+      </a>
+    </li>
+  <%end%>
+</ul>

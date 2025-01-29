@@ -1,0 +1,23 @@
+<h1>Create New Account</h1>
+<%= form_with model: @account do |form| %>
+    <h2>Profile:</h2>
+    <%= form.fields_for :profile do |profile_form| %>
+        <div>
+            <%= profile_form.label :first_name %>
+            <%= profile_form.text_field :first_name %>
+        </div>
+        <div>
+            <%= profile_form.label :last_name %>
+            <%= profile_form.text_field :last_name %>
+        </div>
+        <div>
+            <%= profile_form.label :email %>
+            <%= profile_form.email_field :email %>
+        </div>
+        <div>
+            <%= profile_form.label :birthdate %>
+            <%= profile_form.date_field :birthdate %>
+        </div>
+        <%= form.submit "Create"%>
+    <%end%>
+<%end%>
