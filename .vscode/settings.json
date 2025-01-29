@@ -1,0 +1,6 @@
+{
+    "editor.defaultFormatter": "Shopify.ruby-lsp",
+    "[erb]": {
+        "editor.tabSize": 2
+    }
+}
