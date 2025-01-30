@@ -10,11 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_29_190208) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_29_225433) do
   create_table "accounts", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "profile_id"
+    t.string "email", null: false
+    t.string "password_digest", null: false
+    t.index ["email"], name: "index_accounts_on_email", unique: true
     t.index ["profile_id"], name: "index_accounts_on_profile_id"
   end
 
@@ -22,10 +25,20 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_29_190208) do
     t.integer "account_id"
     t.string "first_name", null: false
     t.string "last_name", null: false
-    t.string "email", null: false
     t.datetime "birthdate", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["account_id"], name: "index_profiles_on_account_id"
   end
+
+  create_table "sessions", force: :cascade do |t|
+    t.integer "account_id", null: false
+    t.string "ip_address"
+    t.string "user_agent"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_sessions_on_account_id"
+  end
+
+  add_foreign_key "sessions", "accounts"
 end

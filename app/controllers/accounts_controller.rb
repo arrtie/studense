@@ -27,6 +27,6 @@ class AccountsController < ApplicationController
   private
 
   def account_params
-    params.require(:account).permit(profile_attributes: [ :first_name, :last_name, :email, :birthdate ])
+    params.require(:account).permit(:email, :password, :password_confirmation, profile_attributes: [ :first_name, :last_name, :birthdate ])
   end
 end
