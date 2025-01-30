@@ -1,0 +1,6 @@
+<h1>Course Details</h1>
+<ul>
+    <% @course.attributes.each do |key, value| %>
+    <li><%= key %> : <%= value%></li>
+    <%end%>
+</ul>

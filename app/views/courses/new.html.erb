@@ -1,4 +1,17 @@
 <h1>Create Course</h1>
 <%= form_with model: @course do |form| %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+  <div>
+    <%= form.label :start_date %>
+    <%= form.date_field :start_date %>
+  </div>
+  <div>
+    <%= form.label :end_date %>
+    <%= form.date_field :end_date %>
+  </div>
+  <%= form.hidden_field :instructor_id, value: @instructor.id %>
   <%= form.submit "Create"%>
 <%end%>

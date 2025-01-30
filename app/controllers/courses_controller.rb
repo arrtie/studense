@@ -21,7 +21,9 @@ class CoursesController < ApplicationController
   end
 
   def create
-    @course = self.new
+    @instructor = Instructor.find_by({ profile_id: @profile.id })
+    @course = Course.new(course_params)
+
     if @course.save!
       redirect_to @course
     else
@@ -33,5 +35,9 @@ class CoursesController < ApplicationController
 
   def set_profile
     @profile = helpers.current_account.profile
+  end
+
+  def course_params
+    params.require(:course).permit(:name, :start_date, :end_date, :instructor_id)
   end
 end
