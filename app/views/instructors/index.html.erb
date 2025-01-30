@@ -1,0 +1,10 @@
+<h1>Instructors</h1>
+<ul>
+  <% @instructors.each do |instructor| %>
+    <li>
+      <a href="<%= instructor_path(instructor) %>">
+        <%= instructor.id %>
+      </a>
+    </li>
+  <%end%>
+</ul>

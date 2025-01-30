@@ -1,0 +1,11 @@
+<h1>Student Profile Details</h1>
+<div>
+    <h2>Student Profile</h2>
+    <p>Student id: <%= @student.id %></p>
+    <h2>Profile</h2>
+    <ul>
+        <% @profile.attributes.each do |key, value| %>
+        <li><%= key %> : <%= value%></li>
+        <%end%>
+    </ul>
+</div>
