@@ -8,3 +8,17 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+ html, body {
+    --surface-color: #1e1e1e;
+    --font-color: #E1E1E1;
+    background-color: var(--surface-color);
+    color: var(--font-color);
+ }
+
+ body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+ }
