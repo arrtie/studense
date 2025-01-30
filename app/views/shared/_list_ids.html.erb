@@ -1,0 +1,9 @@
+<ul>
+  <% records.each do |record| %>
+    <li>
+      <a href="<%= record_helper(record) %>">
+        <%= record.id %>
+      </a>
+    </li>
+  <%end%>
+</ul>
