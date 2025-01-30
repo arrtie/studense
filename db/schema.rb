@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_29_225433) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_30_204502) do
   create_table "accounts", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -19,6 +19,23 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_29_225433) do
     t.string "password_digest", null: false
     t.index ["email"], name: "index_accounts_on_email", unique: true
     t.index ["profile_id"], name: "index_accounts_on_profile_id"
+  end
+
+  create_table "courses", force: :cascade do |t|
+    t.string "name"
+    t.integer "instructor_id"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["instructor_id"], name: "index_courses_on_instructor_id"
+  end
+
+  create_table "instructors", force: :cascade do |t|
+    t.integer "profile_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_instructors_on_profile_id"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -40,5 +57,13 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_29_225433) do
     t.index ["account_id"], name: "index_sessions_on_account_id"
   end
 
+  create_table "students", force: :cascade do |t|
+    t.integer "profile_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_students_on_profile_id"
+  end
+
+  add_foreign_key "courses", "instructors"
   add_foreign_key "sessions", "accounts"
 end
