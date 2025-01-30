@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  root "accounts#index"
+
+  resource :session
+  resources :passwords, param: :token
   resources :accounts
   resources :profiles
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
