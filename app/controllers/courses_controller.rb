@@ -24,10 +24,10 @@ class CoursesController < ApplicationController
     @instructor = Instructor.find_by({ profile_id: @profile.id })
     @course = Course.new(course_params)
 
-    if @course.save!
+    if @course.save
       redirect_to @course
     else
-      redirect_to new_course_url(), status: :unprocessable_entity
+      render :new
     end
   end
 
@@ -38,6 +38,6 @@ class CoursesController < ApplicationController
   end
 
   def course_params
-    params.require(:course).permit(:name, :start_date, :end_date, :instructor_id)
+    params.require(:course).permit(:name, :start_date, :end_date, :student_limit, :instructor_id)
   end
 end
