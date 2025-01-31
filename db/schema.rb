@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_31_184133) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_31_224709) do
   create_table "accounts", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -30,6 +30,17 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_31_184133) do
     t.datetime "updated_at", null: false
     t.integer "student_limit", null: false
     t.index ["instructor_id"], name: "index_courses_on_instructor_id"
+  end
+
+  create_table "enrollments", id: false, force: :cascade do |t|
+    t.integer "course_id", null: false
+    t.integer "student_id", null: false
+    t.string "status"
+    t.decimal "grade"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_enrollments_on_course_id"
+    t.index ["student_id"], name: "index_enrollments_on_student_id"
   end
 
   create_table "instructors", force: :cascade do |t|
