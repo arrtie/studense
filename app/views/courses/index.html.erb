@@ -1,2 +1,5 @@
 <h1>Courses</h1>
-<%= render partial: "shared/list_ids", collection: @courses, as: :item, record_helper: courses_url %>
+<ul>
+  <%= render partial: "shared/id_list", locals: {url_helper: :course_url, collection: @courses } %> 
+</ul>
+  
