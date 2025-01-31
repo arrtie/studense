@@ -1,6 +1,6 @@
 <h1>Course Details</h1>
 <ul>
-    <% @course.attributes.each do |key, value| %>
-    <li><%= key %> : <%= value%></li>
+    <% @course.attributes.reject { |key, _| ["created_at"].include?(key) }.each do |key, value| %>
+        <li><%= key %> : <%= value%></li>
     <%end%>
 </ul>

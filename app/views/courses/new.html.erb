@@ -12,6 +12,10 @@
     <%= form.label :end_date %>
     <%= form.date_field :end_date %>
   </div>
+  <div>
+    <%= form.label :student_limit %>
+    <%= form.number_field :student_limit %>
+  </div>
   <%= form.hidden_field :instructor_id, value: @instructor.id %>
   <%= form.submit "Create"%>
 <%end%>
