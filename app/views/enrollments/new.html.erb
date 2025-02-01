@@ -1,0 +1,11 @@
+<%= form_with model: @enrollment do |form| %>
+  <div>
+    <%= form.label :course %>
+    <%= form.collection_select :course_id, Course.order(:name), :id, :name %>
+  </div>
+  <%= form.submit "Enroll" %>
+<% end %>
+
+<% flash.each do |name, msg| -%>
+  <%= content_tag :div, msg, class: name %>
+<% end %>

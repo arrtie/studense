@@ -1,0 +1,6 @@
+<h1>Enrollment Details</h1>
+<ul>
+    <% @enrollment.attributes.reject { |key, _| ["created_at"].include?(key) }.each do |key, value| %>
+        <li><%= key %> : <%= value %></li>
+    <% end %>
+</ul>
