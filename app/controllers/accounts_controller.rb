@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class AccountsController < ApplicationController
+  allow_unauthenticated_access only: :new
+
   def index
     @accounts = Account.all
   end
