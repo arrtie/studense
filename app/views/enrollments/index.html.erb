@@ -1,0 +1,22 @@
+<h1>Enrollments</h1>
+<table>
+  <thead>
+    <th>Enrollment id</th>
+    <th>Course name</th>
+    <th>Student name</th>
+  </thead>
+  <% @enrollment_table.each do |enrollment| %>
+    <tr>
+      <th>
+        <%= enrollment[:id]%>
+      </th>
+      <td>
+        <%= enrollment[:course_name]%>
+      </td>
+      <td>
+        <%= enrollment[:student_name]%>
+      </td>
+    </tr>
+  <% end %>
+</table>
+  

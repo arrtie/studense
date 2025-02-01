@@ -32,10 +32,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_31_224709) do
     t.index ["instructor_id"], name: "index_courses_on_instructor_id"
   end
 
-  create_table "enrollments", id: false, force: :cascade do |t|
-    t.integer "course_id", null: false
-    t.integer "student_id", null: false
-    t.string "status"
+  create_table "enrollments", force: :cascade do |t|
+    t.integer "student_id"
+    t.integer "course_id"
+    t.integer "status"
     t.decimal "grade"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -77,5 +77,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_31_224709) do
   end
 
   add_foreign_key "courses", "instructors"
+  add_foreign_key "enrollments", "courses"
+  add_foreign_key "enrollments", "students"
   add_foreign_key "sessions", "accounts"
 end

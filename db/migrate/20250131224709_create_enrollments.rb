@@ -1,9 +1,9 @@
 class CreateEnrollments < ActiveRecord::Migration[8.0]
   def change
-    create_join_table :courses, :students, table_name: :enrollments do |t|
-      t.index :student_id
-      t.index :course_id
-      t.string :status
+    create_table :enrollments do |t|
+      t.belongs_to :student, foreign_key: true
+      t.belongs_to :course, foreign_key: true
+      t.integer :status
       t.decimal :grade
 
       t.timestamps
