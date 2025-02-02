@@ -2,7 +2,7 @@
 
 desc "give all instructors a course"
 namespace :seed do
-  task default: [ :environment ] do
+  task courses: [ :environment ] do
     Instructor.find_each do |instructor|
       instructor.courses.create(
         name: Faker::Educator.course_name,
