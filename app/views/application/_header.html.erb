@@ -1,0 +1,8 @@
+<nav class="header">
+  <%= link_to "Home", root_path %>
+  <% if authenticated? %>
+    <%= button_to "Log out", session_path, method: :delete %>
+  <% else %>
+    <%= button_to "Sign in", session_path, method: :new %>
+  <% end %>
+</nav>
