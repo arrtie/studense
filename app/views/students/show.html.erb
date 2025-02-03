@@ -1,11 +1,22 @@
-<h1>Student Profile Details</h1>
-<div>
-    <h2>Student Profile</h2>
-    <p>Student id: <%= @student.id %></p>
-    <h2>Profile</h2>
+<h1>Student Profile </h1>
+<h2>Details</h2>
+<ul>
+    <li>Student id: <%= @student.id %></li>
+    <% @profile.attributes.each do |key, value| %>
+    <li><%= key %> : <%= value%></li>
+    <%end%>
+</ul>
+
+<h2>Enrollments</h2>
+<% if @enrollments.empty? %>
+    <p>No enrollments yet</p>
+<% else %>
     <ul>
-        <% @profile.attributes.each do |key, value| %>
-        <li><%= key %> : <%= value%></li>
+        <% @enrollments.each do |enrollment| %>
+        <li><%= enrollment.name %></li>
         <%end%>
     </ul>
-</div>
+<% end %>
+
+<%= button_to "Delete Student Profile", @student, method: :delete, data: {turbo_confirm: "are you sure?"} %>
+<%= link_to "All Students", students_path %>

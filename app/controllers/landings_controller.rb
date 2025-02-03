@@ -6,7 +6,6 @@ class LandingsController < ApplicationController
   def show
     if authenticated?
       get_profiles
-      puts "profile: " + @profile.first_name
       render variants: [ :authenticated ]
     end
   end

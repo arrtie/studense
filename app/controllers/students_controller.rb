@@ -1,16 +1,19 @@
 # frozen_string_literal: true
 
 class StudentsController < ApplicationController
-  before_action :set_profile
+  before_action :set_student_and_profile, only: %i[show destroy]
 
   def index
-    @students = Student.all
+    @students = Student.includes(:profile).all
   end
+
   def show
-    @student = Student.find(params[:id])
+    @enrollments = Enrollment.where(student_id: params[:id])
   end
+
   def new
-    @student = Student.new({ profile_id: @profile.id })
+    profile = Current.account.profile
+    @student = Student.new({ profile_id: profile.id })
   end
 
   def create
@@ -22,9 +25,15 @@ class StudentsController < ApplicationController
     end
   end
 
+  def destroy
+    @student.destroy
+    redirect_to students_path
+  end
+
   private
 
-  def set_profile
-    @profile = helpers.current_account.profile
+  def set_student_and_profile
+    @student =  Student.includes(:profile).find(params[:id])
+    @profile = @student.profile
   end
 end

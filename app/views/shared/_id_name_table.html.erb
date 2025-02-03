@@ -1,0 +1,19 @@
+<h1><%= title %></h1>
+<table>
+  <thead>
+    <th><%= title %> id</th>
+    <th>Name</th>
+  </thead>
+  <% records.each do |record| %>
+    <tr>
+      <td>
+        <a href="<%= record_helper.call(record.id) %>">
+          <%= record.id %>
+        </a>
+      </td>
+      <td>
+        <%= record.profile.first_name %>
+      </td>
+    </tr>
+  <%end%>
+</table>
