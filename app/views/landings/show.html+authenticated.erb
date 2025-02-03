@@ -1,0 +1,14 @@
+<h1>Show Auth'd Studense</h1>
+<ul>
+  <% if @student.nil?%>
+    <li><%= link_to "Create student profile", new_student_path %></li>
+  <% else %>
+    <li><%= link_to "student profile", student_path(@student) %></li>
+  <% end %>
+
+  <% if @instructor.nil?%>
+    <li><%= link_to "Create instructor profile", new_instructor_path %></li>
+  <% else %>
+    <li><%= link_to "Instructor profile", instructor_path(@instructor) %></li>
+  <% end %>
+</ul>

@@ -23,10 +23,7 @@
   </head>
 
   <body>
-    <nav class="header">
-      <%= link_to "Home", root_path %>
-      <%= button_to "Log out", session_path, method: :delete if authenticated? %>
-    </nav>
+    <%= render partial: "header" %>
     <main>
       <%= yield %>
     </main>
