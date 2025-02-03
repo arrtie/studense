@@ -1,10 +1,19 @@
 <h1>Students</h1>
-<ul>
+<table>
+  <thead>
+    <th>Student id</th>
+    <th>Name</th>
+  </thead>
   <% @students.each do |student| %>
-    <li>
-      <a href="<%= student_path(student) %>">
-        <%= student.id %>
-      </a>
-    </li>
+    <tr>
+      <td>
+        <a href="<%= student_path(student[:id]) %>">
+          <%= student.id %>
+        </a>
+      </td>
+      <td>
+        <%= student.full_name %>
+      </td>
+    </tr>
   <%end%>
-</ul>
+</table>

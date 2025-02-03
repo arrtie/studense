@@ -8,6 +8,7 @@ class InstructorsController < ApplicationController
   end
   def show
     @instructor = Instructor.find(params[:id])
+    @courses = Course.where(instructor_id: params[:id])
   end
   def new
     @instructor = Instructor.new({ profile_id: @profile.id })

@@ -1,11 +1,22 @@
-<h1>Instructor Profile Details</h1>
-<div>
-    <h2>Instructor Profile</h2>
+<h1>Instructor Details</h1>
+<h2>Profile</h2>
+<ul>
     <p>Instructor id: <%= @instructor.id %></p>
-    <h2>Profile</h2>
-    <ul>
         <% @profile.attributes.each do |key, value| %>
-        <li><%= key %> : <%= value%></li>
+            <li><%= key %> : <%= value%></li>
+        <%end%>
+</ul>
+
+<h2>Courses</h2>
+<% if @courses.empty? %>
+    <p>No courses yet</p>
+    <%= link_to "create course", new_course_path %>
+<% else %>
+    <ul>
+        <% @courses.each do |course| %>
+        <li><%= link_to course.name, course_path(course) %></li>
         <%end%>
     </ul>
-</div>
+<% end %>
+<br />
+<%= link_to "All Instructors", instructors_path %>
