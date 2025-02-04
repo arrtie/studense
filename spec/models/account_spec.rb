@@ -5,6 +5,6 @@ RSpec.describe Account, type: :module do
     subject { FactoryBot.create(:account, email:) }
 
   it "is valid with valid attributes" do
-    expect(subject.email).to eq("yes@email.com")
+    expect(subject.email).to eq("no@email.com")
   end
 end
