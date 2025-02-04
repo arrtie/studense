@@ -52,6 +52,8 @@ group :development, :test do
 
   # make fake data
   gem "faker"
+
+  gem "rspec-rails", "~> 7.0.0"
 end
 
 group :development do
