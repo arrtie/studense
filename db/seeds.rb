@@ -10,7 +10,7 @@
 
 def make_account(domain:)
   password = Faker::Internet.password
-  Account.new(email: Faker::Internet.email(domain:), password:, password_confirmation: password)
+  Account.new(email: Faker::Internet.unique.email(domain:), password:, password_confirmation: password)
 end
 
 def build_profile(current_acc:)
