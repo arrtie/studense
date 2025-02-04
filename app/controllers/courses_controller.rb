@@ -12,7 +12,7 @@ class CoursesController < ApplicationController
   def new
     @instructor = Instructor.find_by({ profile_id: @profile.id })
 
-    if @instructor.nil?
+    if !authorize Course
       redirect_to courses_url(), status: :unprocessable_entity
       return
     end
@@ -34,7 +34,7 @@ class CoursesController < ApplicationController
   private
 
   def set_profile
-    @profile = helpers.current_account.profile
+    @profile = current_user.profile
   end
 
   def course_params

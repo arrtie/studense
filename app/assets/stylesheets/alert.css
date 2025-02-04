@@ -1,0 +1,21 @@
+@keyframes fade-out {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }    
+}
+
+aside {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: fit-content;
+    background-color: red;
+    padding: 8px 16px;
+    border: 1px solid white;
+    border-radius: 4px;
+    animation: fade-out 3s 3s both;
+}

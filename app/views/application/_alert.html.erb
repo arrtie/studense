@@ -1,0 +1,6 @@
+<%= stylesheet_link_tag("alert") %>
+<% flash.each do |name, msg| %>
+  <aside>
+    <%= content_tag :div, msg, class: name %>
+  </aside>
+<% end %>
