@@ -12,6 +12,7 @@ class StudentsController < ApplicationController
   end
 
   def new
+    authorize Student
     profile = Current.account.profile
     @student = Student.new({ profile_id: profile.id })
   end
