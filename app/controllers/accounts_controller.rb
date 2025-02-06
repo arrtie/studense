@@ -21,9 +21,9 @@ class AccountsController < ApplicationController
     @account = Account.new(account_params)
     if @account.save
       redirect_to @account
-    else
-      render :new, status: :unprocessable_entity
+      return
     end
+    render :new, status: :unprocessable_entity
   end
 
   private
