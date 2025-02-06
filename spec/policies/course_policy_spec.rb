@@ -1,27 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe CoursePolicy, type: :policy do
-  let(:user) { User.new }
+  let(:user) { FactoryBot.create(:account) }
 
-  subject { described_class }
-
-  permissions ".scope" do
-    pending "add some examples to (or delete) #{__FILE__}"
-  end
-
-  permissions :show? do
-    pending "add some examples to (or delete) #{__FILE__}"
-  end
-
-  permissions :create? do
-    pending "add some examples to (or delete) #{__FILE__}"
-  end
-
-  permissions :update? do
-    pending "add some examples to (or delete) #{__FILE__}"
-  end
-
-  permissions :destroy? do
-    pending "add some examples to (or delete) #{__FILE__}"
+  describe "#new" do
+    context "when the user has no instructor profile" do
+      it "should be false" do
+        expect(Pundit.policy(user, Course).new?).to be(false)
+      end
+    end
   end
 end
