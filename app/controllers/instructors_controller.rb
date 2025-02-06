@@ -14,6 +14,12 @@ class InstructorsController < ApplicationController
     @instructor = Instructor.new({ profile_id: @profile.id })
   end
 
+  def destroy
+    if Instructor.find(params[:id]).destroy
+      redirect_to instructors_path, notice: "Instructor profile deleted"
+    end
+  end
+
   def create
     @instructor = self.new
     if @instructor.save!
@@ -26,6 +32,6 @@ class InstructorsController < ApplicationController
   private
 
   def set_profile
-    @profile = helpers.current_account.profile
+    @profile = current_user.profile
   end
 end

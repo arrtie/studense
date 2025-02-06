@@ -3,6 +3,6 @@
   <% if authenticated? %>
     <%= button_to "Log out", session_path, method: :delete %>
   <% else %>
-    <%= button_to "Sign in", session_path, method: :new %>
+    <%= link_to "Sign in", new_session_path %>
   <% end %>
 </nav>

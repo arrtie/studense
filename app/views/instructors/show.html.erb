@@ -19,4 +19,5 @@
     </ul>
 <% end %>
 <br />
+<%= button_to "Delete Instructor Profile", @instructor, method: :delete, data: {turbo_confirm: "are you sure?"} %>
 <%= link_to "All Instructors", instructors_path %>
