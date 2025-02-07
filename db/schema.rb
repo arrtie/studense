@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_31_224709) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_07_182740) do
   create_table "accounts", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -19,6 +19,13 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_31_224709) do
     t.string "password_digest", null: false
     t.index ["email"], name: "index_accounts_on_email", unique: true
     t.index ["profile_id"], name: "index_accounts_on_profile_id"
+  end
+
+  create_table "admins", force: :cascade do |t|
+    t.integer "account_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_admins_on_account_id"
   end
 
   create_table "courses", force: :cascade do |t|
@@ -76,6 +83,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_31_224709) do
     t.index ["profile_id"], name: "index_students_on_profile_id"
   end
 
+  add_foreign_key "admins", "accounts"
   add_foreign_key "courses", "instructors"
   add_foreign_key "enrollments", "courses"
   add_foreign_key "enrollments", "students"
