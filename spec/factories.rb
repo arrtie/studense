@@ -4,6 +4,10 @@ FactoryBot.define do
     password { "blah" }
     password_confirmation { password }
 
+    trait :as_admin do
+      association :admin
+    end
+
     after(:build) do |account|
       account.profile ||= create(:profile, account: account)
     end
