@@ -2,6 +2,7 @@
 
 class AdminsController < ApplicationController
   before_action :set_admin, only: %i[ show destroy ]
+  before_action :is_authorized?
 
   # GET /admins or /admins.json
   def index
@@ -50,5 +51,9 @@ class AdminsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def admin_params
       params.expect(admin: [ :account_id ])
+    end
+
+    def is_authorized?
+      authorize Admin
     end
 end
