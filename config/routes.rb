@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
-  resource :session
-  resources :passwords, param: :token
+  resource :session, only: [ :new, :create, :destroy ]
+  resources :passwords, only: %i[new create edit update], param: :token
   resources :accounts
   resources :profiles
   resources :instructors
   resources :students
   resources :courses
   resources :enrollments, only: %i[index show new create]
-  resource :landing
+  resource :landing, only: %i[show]
   resources :admins, only: %i[index show new create destroy]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
