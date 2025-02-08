@@ -8,5 +8,5 @@ class Account < ApplicationRecord
   accepts_nested_attributes_for :profile
 
   normalizes :email, with: ->(e) { e.strip.downcase }
-  validates :profile, presence: true
+  validates :profile, :email, :password, :password_confirmation, presence: true
 end
