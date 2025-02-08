@@ -41,6 +41,7 @@ RSpec.describe Account, type: :module do
     subject { account.destroy }
 
     it "destroys the account and profile" do
+      account
       profile_count = Profile.count
       account_count = Account.count
       subject
