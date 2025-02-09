@@ -75,8 +75,8 @@ RSpec.describe "/admins", type: :request do
       end
 
       describe "PATCH /update" do
-        let(:account) { FactoryBot.create(:account) }
-        let(:params) { { admin:  { account_id: account.id } } }
+        let(:account) { FactoryBot.create(:account)            }
+        let(:params)  { { admin:  { account_id: account.id } } }
 
         it "renders a response with 404" do
           patch admin_url(admin), params: params
@@ -91,7 +91,7 @@ RSpec.describe "/admins", type: :request do
             account:
             FactoryBot.create(:account)
             )
-          }
+        }
 
         it "destroys the requested admin" do
           admin
@@ -150,8 +150,8 @@ RSpec.describe "/admins", type: :request do
       end
 
       describe "PATCH /update" do
-        let(:account) { FactoryBot.create(:account) }
-        let(:params) { { admin:  { account_id: account.id } } }
+        let(:account) { FactoryBot.create(:account)            }
+        let(:params)  { { admin:  { account_id: account.id } } }
 
         it "renders a response with 404" do
           patch admin_url(admin), params: params

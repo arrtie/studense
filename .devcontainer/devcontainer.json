@@ -14,7 +14,13 @@
 			"settings": {
 				"terminal.integrated.shell.linux": "/bin/bash"
 			},
-			"extensions": ["ms-azuretools.vscode-docker", "redhat.vscode-yaml", "shopify.ruby-lsp", "cardinal90.multi-cursor-case-preserve"]
+			"extensions": [
+                "ms-azuretools.vscode-docker",
+                "redhat.vscode-yaml",
+                "shopify.ruby-lsp",
+                "cardinal90.multi-cursor-case-preserve",
+                "koichisasada.vscode-rdbg"
+            ]
         }
 	}
 }

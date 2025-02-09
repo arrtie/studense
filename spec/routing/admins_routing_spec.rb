@@ -51,11 +51,11 @@ RSpec.describe AdminsController, type: :routing do
 
       context "GET" do
         it "routes unknown paths to errors#route_not_found" do
-        expect(get: "/admins/1/update").to route_to(
-          controller: "application",
-          action: "not_found_method",
-          unmatched: "admins/1/update"
-          )
+          expect(get: "/admins/1/update").to route_to(
+            controller: "application",
+            action: "not_found_method",
+            unmatched: "admins/1/update"
+            )
         end
       end
     end
