@@ -25,9 +25,9 @@ class PasswordsController < ApplicationController
   end
 
   private
-    def set_account_by_token
-      @account = Account.find_by_password_reset_token!(params[:token])
-    rescue ActiveSupport::MessageVerifier::InvalidSignature
-      redirect_to new_password_path, alert: "Password reset link is invalid or has expired."
-    end
+  def set_account_by_token
+    @account = Account.find_by_password_reset_token!(params[:token])
+  rescue ActiveSupport::MessageVerifier::InvalidSignature
+    redirect_to new_password_path, alert: "Password reset link is invalid or has expired."
+  end
 end
