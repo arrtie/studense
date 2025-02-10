@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_07_182740) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_09_040240) do
   create_table "accounts", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -19,6 +19,17 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_07_182740) do
     t.string "password_digest", null: false
     t.index ["email"], name: "index_accounts_on_email", unique: true
     t.index ["profile_id"], name: "index_accounts_on_profile_id"
+  end
+
+  create_table "admin_requests", force: :cascade do |t|
+    t.string "approvable_type", null: false
+    t.integer "approvable_id", null: false
+    t.integer "status", null: false
+    t.integer "admin_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["admin_id"], name: "index_admin_requests_on_admin_id"
+    t.index ["approvable_type", "approvable_id"], name: "index_admin_requests_on_approvable"
   end
 
   create_table "admins", force: :cascade do |t|

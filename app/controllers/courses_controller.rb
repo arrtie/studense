@@ -6,7 +6,8 @@ class CoursesController < ApplicationController
   end
 
   def show
-    @course = Course.find(params[:id])
+    @course = Course.joins(:admin_request, instructor: [ :profile ])
+      .select(:name, :status, :instructor_id, :id, :first_name, :last_name, :start_date, :start_date, :student_limit).find(params[:id])
   end
 
   def new
@@ -21,10 +22,13 @@ class CoursesController < ApplicationController
   end
 
   def create
+    authorize Course
     @instructor = Instructor.find_by({ profile_id: @profile.id })
     @course = Course.new(course_params)
+    @course.instructor = @instructor
 
     if @course.save
+      AdminRequest.create! approvable: @course
       redirect_to @course
     else
       render :new
