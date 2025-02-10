@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 class EnrollmentsController < ApplicationController
-  before_action :set_student
+  include Approvable
+  before_action :set_student, only: :new
   before_action :prevent_duplicate_enrollment, only: :create
   before_action :prevent_full_course_enrollment, only: :create
 
@@ -16,12 +17,15 @@ class EnrollmentsController < ApplicationController
   end
 
   def new
+    authorize Enrollment
     @enrollment = Enrollment.new
   end
 
   def create
+    authorize Enrollment
     @enrollment = Enrollment.new(enrollment_params)
     if @enrollment.save!
+      create_admin_request(id: @enrollment.id, approvable_type: "Enrollment")
       redirect_to @enrollment
     else
       redirect_to :new, alert: "uhoh, something went wrong 😬"
@@ -31,11 +35,11 @@ class EnrollmentsController < ApplicationController
   private
 
   def enrollment_params
-    params.require(:enrollment).permit(:course_id).merge(student_id: @student.id)
+    params.require(:enrollment).permit(:course_id, :student_id)
   end
 
   def prevent_duplicate_enrollment
-    if Enrollment.exists?(student_id: @student.id, course_id: params[:enrollment][:course_id])
+    if Enrollment.exists?(student_id: enrollment_params[:student_id], course_id: enrollment_params[:course_id])
       redirect_to new_enrollment_path, alert: "you're already enrolled in this course, silly 😂"
     end
   end

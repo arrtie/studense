@@ -1,23 +1,19 @@
 class StudentPolicy < ApplicationPolicy
   def new?
-    !student_present?
+    missing_student?
+  end
+
+  def create?
+    missing_student?
   end
 
   def destroy?
     false
-    # student_present? and user.profile.student == student
-  end
-
-  class Scope < ApplicationPolicy::Scope
-    # NOTE: Be explicit about which records you allow access to!
-    # def resolve
-    #   scope.all
-    # end
   end
 
   private
 
-  def student_present?
-    user.profile.student.present?
+  def missing_student?
+    user.profile.student.nil?
   end
 end

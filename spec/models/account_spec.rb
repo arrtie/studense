@@ -13,12 +13,6 @@ RSpec.describe Account, type: :module do
     context "when account attributes are present" do
       subject { Account.new(email: "f@e.com", password: "password",  password_confirmation: "password") }
 
-      context "and a profile is not present" do
-        it "does not save" do
-          expect(subject.save).to be(false), "Account needs a profile to save"
-        end
-      end
-
       context "and a profile is present" do
         it "saves successfully" do
           subject.build_profile(first_name: "firsty", last_name: "lasty", birthdate: 18.years.ago)

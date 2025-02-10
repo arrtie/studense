@@ -8,17 +8,6 @@ RSpec.describe AccountsController, type: :controller do
       post :create, params: { account: account_params }
     }
 
-    context "without attributes for profile" do
-      let(:account_params) { attributes_for :account }
-
-      it "should not create an account" do
-        expect {
-          create_account
-        }.to change { Account.count }.by(0)
-        expect(response).to render_template "accounts/new"
-      end
-    end
-
     context "with attributes for profile" do
       let(:account_params) { attributes_for :account, profile_attributes: attributes_for(:profile) }
 

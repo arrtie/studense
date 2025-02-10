@@ -20,5 +20,11 @@
 		"scope": "ruby",
 		"prefix": "fsl",
 		"body": ["# frozen_string_literal: true\n"]
-	}
+	},
+	
+	"put copy": {
+		"scope": "ruby",
+		"prefix": "pv",
+		"body": ["puts \"$CLIPBOARD #{$CLIPBOARD}\""]
+	},
 }
