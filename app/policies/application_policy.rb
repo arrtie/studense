@@ -8,6 +8,10 @@ class ApplicationPolicy
     @record = record
   end
 
+  def is_admin?
+    user.admin.present?
+  end
+
   def index?
     false
   end

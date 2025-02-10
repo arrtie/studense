@@ -19,6 +19,7 @@ RSpec.describe "Courses API", type: :request do
           expect { post courses_url, params: course_params }.to change(Course, :count).by(1)
         end
       end
+
       context "when the user is not an instructor" do
         let(:course_params) { return { course: attributes_for(:course) } }
 

@@ -3,6 +3,7 @@
     <%= form.label :course %>
     <%= form.collection_select :course_id, Course.order(:name), :id, :name %>
   </div>
+  <%= form.hidden_field student_id: @student.id%>
   <%= form.submit "Enroll" %>
 <% end %>
 

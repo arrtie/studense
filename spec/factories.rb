@@ -8,6 +8,11 @@ FactoryBot.define do
       association :admin
     end
 
+
+    after(:build) do |account|
+      account.profile ||= create(:profile, account: account)
+    end
+
     trait :as_instructor do
       after(:build) do |account|
         account.profile ||= create(:profile, account: account)
@@ -15,8 +20,10 @@ FactoryBot.define do
       end
     end
 
-    after(:build) do |account|
-      account.profile ||= create(:profile, account: account)
+    trait :with_student do
+      after(:build) do |account|
+        account.profile = create(:profile, :with_student, account: account)
+      end
     end
   end
 
@@ -42,6 +49,7 @@ FactoryBot.define do
   end
 
   factory :enrollment do
+    grade { 69 }
     association :student
     association :course
   end
@@ -55,6 +63,18 @@ FactoryBot.define do
     last_name { Faker::Name.last_name }
     birthdate { Faker::Date.between(from: 18.years.ago, to: 118.years.ago) }
     association :account
+
+    trait :with_instructor do
+      after(:build) do |profile|
+        FactoryBot.create(:instructor, profile:)
+      end
+    end
+
+    trait :with_student do
+      after(:build) do |profile|
+        FactoryBot.create(:student, profile:)
+      end
+    end
   end
 
   factory :student do
