@@ -1,24 +1,45 @@
-# README
+# Studense
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Under Development
 
-Things you may want to cover:
+Studense is an education platform I am building to explore development with Ruby on Rails. Watch this space!
 
-* Ruby version
+## Features
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- [ ] Authentication
+  - [x] only publicly expose create account and sign up
+  - [ ] oauth
+- [x] Accounts
+  - [ ] JSON payload
+- [x] Profiles
+  - [ ] JSON payload
+- [ ] Students
+  - [ ] JSON payload
+  - [x] CRUD
+  - [ ] require approval
+- [ ] Instructors
+  - [ ] JSON payload
+  - [x] CRUD
+  - [ ] require approval
+- [ ] Courses
+  - [ ] JSON payload
+  - [x] approvable
+  - create
+    - [x] only admin or Instructor
+  - destroy
+    - [ ] only admin or same Instructor
+- [ ] Enrollments
+  - [ ] JSON payload
+  - [x] approvable
+  - create
+    - [x] only admin or Instructor
+    - [ ] only show approved courses
+    - [ ] student selector for admin users
+  - destroy
+    - [ ] only admin or same Instructor
+- [ ] Admin Requests
+  - [ ] restrict to admins
+  - [ ] index to display all requests
+  - [ ] approve button
+  - [ ] deny button
+  - [ ] email regarding the status
