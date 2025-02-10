@@ -1,0 +1,11 @@
+<% content_for :title, "New admin request" %>
+
+<h1>New admin request</h1>
+
+<%= render "form", admin_request: @admin_request %>
+
+<br>
+
+<div>
+  <%= link_to "Back to admin requests", admin_requests_path %>
+</div>
