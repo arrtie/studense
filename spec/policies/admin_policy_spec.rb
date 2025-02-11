@@ -34,7 +34,7 @@ RSpec.describe AdminPolicy, type: :policy do
   end
 
   context "where the user is an admin" do
-    let(:user) { create(:account, :as_admin) }
+    let(:user) { create(:account, :with_admin) }
 
     describe "#index" do
       it "should return true" do

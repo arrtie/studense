@@ -12,7 +12,7 @@ RSpec.describe "/admins", type: :request do
     end
 
     context "when the user is an admin" do
-      let(:current_account) { FactoryBot.create(:account, :as_admin) }
+      let(:current_account) { FactoryBot.create(:account, :with_admin) }
 
       describe "GET /index" do
         it "renders a successful response" do
