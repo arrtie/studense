@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   resource :session, only: [ :new, :create, :destroy ]
   resources :passwords, only: %i[new create edit update], param: :token
