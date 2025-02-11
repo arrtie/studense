@@ -8,4 +8,8 @@ class AdminRequestPolicy < ApplicationPolicy
   def show?
     is_admin?
   end
+
+  def update?
+    is_admin?
+  end
 end

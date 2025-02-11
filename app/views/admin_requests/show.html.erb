@@ -2,6 +2,9 @@
 
 <%= render @admin_request %>
 
+<p>Type: <%= @admin_request.approvable_type %></p>
+<p>Status: <%= @admin_request.status %></p>
+
 <div>
   <%= link_to "Back to admin requests", admin_requests_path %>
 
