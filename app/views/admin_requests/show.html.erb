@@ -3,7 +3,6 @@
 <%= render @admin_request %>
 
 <div>
-  <%= link_to "Edit this admin request", edit_admin_request_path(@admin_request) %> |
   <%= link_to "Back to admin requests", admin_requests_path %>
 
   <%= button_to "Destroy this admin request", @admin_request, method: :delete %>

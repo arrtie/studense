@@ -4,7 +4,7 @@ FactoryBot.define do
     password { "blah" }
     password_confirmation { password }
 
-    trait :as_admin do
+    trait :with_admin do
       association :admin
     end
 
@@ -32,11 +32,14 @@ FactoryBot.define do
   end
 
   factory :admin_request do
+    status { :pending }
+
     trait :with_course do
-      association :course
+      association :approvable, factory: :course
     end
+
     trait :with_enrollment do
-      association :enrollment
+      association :approvable, factory: :enrollment
     end
   end
 
