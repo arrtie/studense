@@ -1,0 +1,37 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Admin requests" %>
+
+<h1>Admin requests</h1>
+
+<table id="admin_requests">
+  <thead>
+    <tr>
+      <td>
+        type
+      </td>
+      <td>
+        status
+      </td>
+    </tr>
+  </thead>
+  <% @admin_requests.each do |admin_request| %>
+    <tr>
+      <td>
+        <%= admin_request.approvable_type %>
+      </td>
+      <td>
+        <%= admin_request.status %>
+      </td>
+      <td>
+        <%= link_to "show", admin_request %>
+      </td>
+      <td>
+        <%= button_to "approve", admin_request_path(admin_request), method: :put, params: {admin_request: {status: :approved}}  %>
+      </td>
+      <td>
+        <%= button_to "deny", admin_request_path(admin_request), method: :put, params: {admin_request: {status: :denied}}  %>
+      </td>
+    </tr>
+  <% end %>
+</table>

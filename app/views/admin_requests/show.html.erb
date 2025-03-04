@@ -1,0 +1,12 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @admin_request %>
+
+<p>Type: <%= @admin_request.approvable_type %></p>
+<p>Status: <%= @admin_request.status %></p>
+
+<div>
+  <%= link_to "Back to admin requests", admin_requests_path %>
+
+  <%= button_to "Destroy this admin request", @admin_request, method: :delete %>
+</div>

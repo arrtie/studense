@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   resource :session, only: [ :new, :create, :destroy ]
   resources :passwords, only: %i[new create edit update], param: :token
@@ -9,6 +11,7 @@ Rails.application.routes.draw do
   resources :enrollments, only: %i[index show new create]
   resource :landing, only: %i[show]
   resources :admins, only: %i[index show new create destroy]
+  resources :admin_requests, only: %i[index show update]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
