@@ -69,4 +69,4 @@ group :test do
   gem "rails-controller-testing"
 end
 
-gem "pundit", "~> 2.4"
+gem "pundit", "~> 2.5"
